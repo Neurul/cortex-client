@@ -66,7 +66,7 @@ namespace neurUL.Cortex.Client.In
 
             await this.requestProvider.DeleteAsync<object>(
                $"{cortexInBaseUrl}{string.Format(HttpTerminalClient.terminalsPathTemplate, id)}",
-               null,
+               data,
                token: token,
                headers: new KeyValuePair<string, string>("ETag", expectedVersion.ToString())
                );
