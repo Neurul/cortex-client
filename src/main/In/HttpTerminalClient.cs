@@ -35,7 +35,7 @@ namespace neurUL.Cortex.Client.In
             await HttpTerminalClient.exponentialRetryPolicy.ExecuteAsync(
                 async () => await this.CreateTerminalInternal(cortexInBaseUrl, id, presynapticNeuronId, postsynapticNeuronId, effect, strength, authorId, token).ConfigureAwait(false));
 
-        public async Task CreateTerminalInternal(string cortexInBaseUrl, string id, string presynapticNeuronId, string postsynapticNeuronId, NeurotransmitterEffect effect, float strength, string authorId, CancellationToken token = default(CancellationToken))
+        private async Task CreateTerminalInternal(string cortexInBaseUrl, string id, string presynapticNeuronId, string postsynapticNeuronId, NeurotransmitterEffect effect, float strength, string authorId, CancellationToken token = default(CancellationToken))
         {
             var data = new
             {
@@ -57,7 +57,7 @@ namespace neurUL.Cortex.Client.In
             await HttpTerminalClient.exponentialRetryPolicy.ExecuteAsync(
                     async () => await this.DeactivateTerminalInternal(cortexInBaseUrl, id, expectedVersion, authorId, token).ConfigureAwait(false));
 
-        public async Task DeactivateTerminalInternal(string cortexInBaseUrl, string id, int expectedVersion, string authorId, CancellationToken token = default(CancellationToken))
+        private async Task DeactivateTerminalInternal(string cortexInBaseUrl, string id, int expectedVersion, string authorId, CancellationToken token = default(CancellationToken))
         {
             var data = new
             {
